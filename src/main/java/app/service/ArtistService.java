@@ -1,6 +1,6 @@
-    package app.view;
+package app.service;
 
-public class seatView {
+public class ArtistService {
     public void create() {}
 
     public void selectById(int id) {}

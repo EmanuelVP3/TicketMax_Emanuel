@@ -1,6 +1,6 @@
-package app.repository;
+package app.service;
 
-public class seatRepository {
+public class OrderService {
     public void create() {}
 
     public void selectById(int id) {}

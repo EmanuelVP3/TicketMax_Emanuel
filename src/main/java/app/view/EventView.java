@@ -1,6 +1,6 @@
 package app.view;
 
-public class adminView {
+public class EventView {
     public void create() {}
 
     public void selectById(int id) {}

@@ -1,6 +1,6 @@
-package app.view;
+package app.service;
 
-public class artistView {
+public class AdminService {
     public void create() {}
 
     public void selectById(int id) {}

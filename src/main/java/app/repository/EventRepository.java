@@ -1,6 +1,6 @@
-package app.view;
+package app.repository;
 
-public class placeView {
+public class EventRepository {
     public void create() {}
 
     public void selectById(int id) {}

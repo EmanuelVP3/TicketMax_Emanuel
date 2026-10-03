@@ -1,6 +1,6 @@
-package app.service;
+package app.repository;
 
-public class artistService {
+public class ArtistRepository {
     public void create() {}
 
     public void selectById(int id) {}

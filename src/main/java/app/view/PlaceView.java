@@ -1,6 +1,6 @@
-package app.service;
+package app.view;
 
-public class placeService {
+public class PlaceView {
     public void create() {}
 
     public void selectById(int id) {}

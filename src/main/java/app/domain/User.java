@@ -9,7 +9,7 @@ public class User extends Person{
         super();
     }
 
-    public User(Integer id, String name, String lastName, String email, String phone, String password, boolean state, String city, String preferences) {
+    public User(Integer id, String name, String lastName, String email, String phone, String password, String state, String city, String preferences) {
         super(id, name, lastName, email, phone, password, state);
         this.city = city;
         this.preferences = preferences;
@@ -31,21 +31,7 @@ public class User extends Person{
         this.preferences = preferences;
     }
 
-    @Override
-    public void create() {
-        super.create();
-    }
 
-    @Override
-    public void selectById(int id) {
-        super.selectById(id);
-    }
-
-
-    @Override
-    public void update() {
-        super.update();
-    }
 
     public void addPreferences(String preference){
 

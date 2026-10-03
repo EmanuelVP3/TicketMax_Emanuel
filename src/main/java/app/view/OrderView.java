@@ -1,6 +1,6 @@
-package app.service;
+package app.view;
 
-public class userService {
+public class OrderView {
     public void create() {}
 
     public void selectById(int id) {}

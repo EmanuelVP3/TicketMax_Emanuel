@@ -1,17 +1,19 @@
 package app.domain;
 
+import app.domain.enums.ScenaryTypeEnum;
+
 public class Place {
 
     private Integer placeId;
     private String city;
     private String placeName;
-    private String scenaryType;
+    private ScenaryTypeEnum scenaryType;
 
     public Place(){
 
     }
 
-    public Place(Integer placeId, String city, String placeName, String scenaryType) {
+    public Place(Integer placeId, String city, String placeName, ScenaryTypeEnum scenaryType) {
         this.placeId = placeId;
         this.city = city;
         this.placeName = placeName;
@@ -42,15 +44,15 @@ public class Place {
         this.placeName = placeName;
     }
 
-    public String getScenaryType() {
+    public ScenaryTypeEnum getScenaryType() {
         return scenaryType;
     }
 
-    public void setScenaryType(String scenaryType) {
+    public void setScenaryType(ScenaryTypeEnum scenaryType) {
         this.scenaryType = scenaryType;
     }
 
-    //POr ahora porque despues los moveremos de carpeta al service
+    //POr ahora porque después los moveremos de carpeta al service
 
     public void createPlace(){
 

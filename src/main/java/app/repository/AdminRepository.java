@@ -1,6 +1,6 @@
 package app.repository;
 
-public class placeRepository {
+public class AdminRepository {
     public void create() {}
 
     public void selectById(int id) {}
