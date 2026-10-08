@@ -95,25 +95,19 @@ public class UserView {
     public String setUserPreferences(){
 
 
-        int option = DataTypeValidator.validateInt("Seleccione 1. VIP 2. General 3. Preferencial");
-        String preferences = "";
-
-        switch (option){
-
+        while (true) {
+            int option = DataTypeValidator.validateInt("Seleccione 1. VIP 2. General 3. Preferencial");
+            switch (option){
             case 1:
-                preferences = SelectPreferencesEnum.VIP.getPreference();
-                break;
+                return SelectPreferencesEnum.VIP.getPreference();
             case 2:
-                preferences = SelectPreferencesEnum.GENERAL.getPreference();
-                break;
+                return SelectPreferencesEnum.GENERAL.getPreference();
             case 3:
-                preferences = SelectPreferencesEnum.PREFERENCIAL.getPreference();
-                break;
+                return SelectPreferencesEnum.PREFERENCIAL.getPreference();
             default:
                 System.out.println("Opción no valida");
-
+            }
         }
-        return preferences;
     }
 
 
