@@ -58,7 +58,8 @@ public class CliUserInterface {
         int option = DataTypeValidator.validateInt("Seleccione 1. registrar usuario\n" +
                 "2. Consultar Usuario por id\n" +
                 "3. Consultar todos los usuarios\n" +
-                "4. Actualizar usuario");
+                "4. Actualizar usuario\n" +
+                "5. Eliminar usuario");
 
         switch (option){
             case 1:
@@ -76,6 +77,10 @@ public class CliUserInterface {
                 break;
             case 4:
                 userView.update();
+                break;
+            case 5:
+                int deleteId = DataTypeValidator.validateInt("Ingrese el id del usuario a eliminar");
+                userView.delete(deleteId);
                 break;
             default:
                 System.out.println("Ingrese una opción valida");

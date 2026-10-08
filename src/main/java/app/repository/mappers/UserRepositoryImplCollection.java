@@ -66,7 +66,7 @@ public class UserRepositoryImplCollection implements UserRepository {
 
     @Override
     public void deleteById(int id) {
-
+        users.removeIf(user -> user.getId() != null && user.getId() == id);
     }
 
     @Override
