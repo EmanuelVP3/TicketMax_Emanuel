@@ -17,7 +17,7 @@ public class DataTypeValidator {
                 return value;
             } catch (InputMismatchException e) {
                 sc.nextLine();
-                System.out.println("Solo se aceptan numeros enteros" + e.getMessage());
+                System.out.println("Solo se aceptan numeros enteros");
             }
         }
     }

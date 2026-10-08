@@ -29,8 +29,8 @@ public class CliUserInterface {
 
         while(init != 0){
 
-            int option = DataTypeValidator.validateInt("1. Registro " +
-                    "2. Login" +
+            int option = DataTypeValidator.validateInt("1. Registro\n" +
+                    "2. Menu de usuarios\n" +
                     "3. Salir");
 
             switch (option){
@@ -38,7 +38,6 @@ public class CliUserInterface {
                     userView.createUser();
                     break;
                 case 2:
-                    System.out.println("Login");
                     userMenu();
                     break;
                 case 3:
@@ -55,12 +54,15 @@ public class CliUserInterface {
 
     public void userMenu(){
 
-        int option = DataTypeValidator.validateInt("Seleccione 1. registrar usuario\n" +
+        int option;
+        do {
+        option = DataTypeValidator.validateInt("Seleccione 1. registrar usuario\n" +
                 "2. Consultar Usuario por id\n" +
                 "3. Consultar todos los usuarios\n" +
                 "4. Actualizar usuario\n" +
                 "5. Eliminar usuario\n" +
-                "6. Consultar numero de usuarios");
+                "6. Consultar numero de usuarios\n" +
+                "7. Volver al menu principal");
 
         switch (option){
             case 1:
@@ -86,8 +88,11 @@ public class CliUserInterface {
             case 6:
                 userView.countUsers();
                 break;
+            case 7:
+                break;
             default:
                 System.out.println("Ingrese una opción valida");
         }
+        } while (option != 7);
     }
 }

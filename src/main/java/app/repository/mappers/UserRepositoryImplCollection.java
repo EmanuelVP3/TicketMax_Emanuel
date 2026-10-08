@@ -44,13 +44,6 @@ public class UserRepositoryImplCollection implements UserRepository {
     @Override
     public List<User> selectAll() {
 
-        for(User user : users){
-            System.out.println(user.getId() + "" +
-                    " " + user.getName() + "" + user.getLastName() + " " + user.getEmail() + " "
-                    + user.getPhone() + "" + user.getPassword() + "" + user.isState() +
-                    "" + user.getCity() + "" + user.getPreferences());
-        }
-
         return users;
     }
 

@@ -6,7 +6,6 @@ import app.service.helpers.SetUserState;
 import app.service.inputPorts.UserService;
 import app.service.validators.DataTypeValidator;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class UserView {
@@ -30,7 +29,6 @@ public class UserView {
         String lastName = DataTypeValidator.validateString("Ingrese el apellido del usuario: ");
         String email = DataTypeValidator.validateString("Ingrese el correo del usuario: ");
         String phone = DataTypeValidator.validateString("Ingrese el telefono del usuario: ");
-        System.out.println("Ingrese la contraseña del usuario: ");
         String password = DataTypeValidator.validateString("Ingrese la contraseña del usuario: ");
         System.out.println("Ingrese el estado del usuario: ");
         String state = SetUserState.getUserState();
@@ -56,7 +54,17 @@ public class UserView {
 
     public void selectUsers(){
 
-        userService.selectUsers();
+        List<User> users = userService.selectUsers();
+        if (users.isEmpty()) {
+            System.out.println("No hay usuarios registrados");
+            return;
+        }
+        System.out.println("ID | Nombre | Apellido | Correo | Telefono | Estado | Ciudad | Preferencia");
+        for (User user : users) {
+            System.out.println(user.getId() + " | " + user.getName() + " | " + user.getLastName()
+                    + " | " + user.getEmail() + " | " + user.getPhone() + " | " + user.isState()
+                    + " | " + user.getCity() + " | " + user.getPreferences());
+        }
 
     }
 
