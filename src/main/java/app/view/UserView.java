@@ -41,7 +41,7 @@ public class UserView {
 
 
     public void selectById(int id) {
-
+        userService.selectById(id);
     }
 
 
