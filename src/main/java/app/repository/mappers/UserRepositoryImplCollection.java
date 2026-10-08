@@ -31,6 +31,11 @@ public class UserRepositoryImplCollection implements UserRepository {
 
     @Override
     public User selectById(int id) {
+        for (User user : users) {
+            if (user.getId() != null && user.getId() == id) {
+                return user;
+            }
+        }
         return null;
     }
 
