@@ -59,7 +59,8 @@ public class CliUserInterface {
                 "2. Consultar Usuario por id\n" +
                 "3. Consultar todos los usuarios\n" +
                 "4. Actualizar usuario\n" +
-                "5. Eliminar usuario");
+                "5. Eliminar usuario\n" +
+                "6. Consultar numero de usuarios");
 
         switch (option){
             case 1:
@@ -81,6 +82,9 @@ public class CliUserInterface {
             case 5:
                 int deleteId = DataTypeValidator.validateInt("Ingrese el id del usuario a eliminar");
                 userView.delete(deleteId);
+                break;
+            case 6:
+                userView.countUsers();
                 break;
             default:
                 System.out.println("Ingrese una opción valida");
