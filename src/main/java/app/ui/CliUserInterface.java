@@ -58,7 +58,7 @@ public class CliUserInterface {
         int option = DataTypeValidator.validateInt("Seleccione 1. registrar usuario\n" +
                 "2. Consultar Usuario por id\n" +
                 "3. Consultar todos los usuarios\n" +
-                "4. Editar usuario");
+                "4. Actualizar usuario");
 
         switch (option){
             case 1:
