@@ -24,23 +24,44 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void selectById(int id) {
-
+        User user = selectUserById(id);
+        if (user == null) {
+            System.out.println("No se encontró un usuario con ese id");
+            return;
+        }
+        System.out.println(user.getId() + " " + user.getName() + " " + user.getLastName() + " "
+                + user.getEmail() + " " + user.getPhone() + " " + user.isState() + " "
+                + user.getCity() + " " + user.getPreferences());
     }
 
     @Override
-    public void update() {
-
+    public User selectUserById(int id) {
+        return userRepository.selectById(id);
     }
 
     @Override
-    public void deleteUser() {
+    public User updateUser(User user) {
+        return userRepository.updateUser(user);
+    }
 
+    @Override
+    public boolean deleteUser(int id) {
+        if (userRepository.selectById(id) == null) {
+            return false;
+        }
+        userRepository.deleteById(id);
+        return true;
     }
 
     @Override
     public List<User> selectUsers() {
 
         return userRepository.selectAll();
+    }
+
+    @Override
+    public int countUsers() {
+        return userRepository.countUsers();
     }
 
 }

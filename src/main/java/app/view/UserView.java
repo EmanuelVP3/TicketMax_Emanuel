@@ -6,7 +6,6 @@ import app.service.helpers.SetUserState;
 import app.service.inputPorts.UserService;
 import app.service.validators.DataTypeValidator;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class UserView {
@@ -21,12 +20,15 @@ public class UserView {
     public void createUser() {
 
 
-        int id = DataTypeValidator.validateInt("INgrese el id del usuario: ");
+        int id = DataTypeValidator.validateInt("Ingrese el id del usuario: ");
+        if (userService.selectUserById(id) != null) {
+            System.out.println("Ya existe un usuario con ese id");
+            return;
+        }
         String name = DataTypeValidator.validateString("Ingrese el nombre del usuario: ");
         String lastName = DataTypeValidator.validateString("Ingrese el apellido del usuario: ");
         String email = DataTypeValidator.validateString("Ingrese el correo del usuario: ");
         String phone = DataTypeValidator.validateString("Ingrese el telefono del usuario: ");
-        System.out.println("Ingrese la contraseña del usuario: ");
         String password = DataTypeValidator.validateString("Ingrese la contraseña del usuario: ");
         System.out.println("Ingrese el estado del usuario: ");
         String state = SetUserState.getUserState();
@@ -35,27 +37,72 @@ public class UserView {
         System.out.println("Ingrese las preferencias del usuario: ");
         String preferences = setUserPreferences();
 
-        userService.create(id, name , lastName , email , phone , password , state, city, preferences);
+        User createdUser = userService.create(id, name , lastName , email , phone , password , state, city, preferences);
+        if (createdUser == null) {
+            System.out.println("No se pudo registrar el usuario: revise el id");
+        } else {
+            System.out.println("Usuario registrado correctamente");
+        }
 
     }
 
 
     public void selectById(int id) {
-
+        userService.selectById(id);
     }
 
 
     public void selectUsers(){
 
-        userService.selectUsers();
+        List<User> users = userService.selectUsers();
+        if (users.isEmpty()) {
+            System.out.println("No hay usuarios registrados");
+            return;
+        }
+        System.out.println("ID | Nombre | Apellido | Correo | Telefono | Estado | Ciudad | Preferencia");
+        for (User user : users) {
+            System.out.println(user.getId() + " | " + user.getName() + " | " + user.getLastName()
+                    + " | " + user.getEmail() + " | " + user.getPhone() + " | " + user.isState()
+                    + " | " + user.getCity() + " | " + user.getPreferences());
+        }
 
     }
 
 
     public void update() {
-
+        int id = DataTypeValidator.validateInt("Ingrese el id del usuario a actualizar: ");
+        if (userService.selectUserById(id) == null) {
+            System.out.println("No se encontró un usuario con ese id");
+            return;
+        }
+        String name = DataTypeValidator.validateString("Ingrese el nombre del usuario: ");
+        String lastName = DataTypeValidator.validateString("Ingrese el apellido del usuario: ");
+        String email = DataTypeValidator.validateString("Ingrese el correo del usuario: ");
+        String phone = DataTypeValidator.validateString("Ingrese el telefono del usuario: ");
+        String password = DataTypeValidator.validateString("Ingrese la contraseña del usuario: ");
+        String state = SetUserState.getUserState();
+        String city = DataTypeValidator.validateString("Ingrese la ciudad del usuario: ");
+        String preferences = setUserPreferences();
+        User updatedUser = new User(id, name, lastName, email, phone, password, state, city, preferences);
+        if (userService.updateUser(updatedUser) == null) {
+            System.out.println("No se pudo actualizar el usuario");
+        } else {
+            System.out.println("Usuario actualizado correctamente");
+        }
     }
 
+
+    public void delete(int id) {
+        if (userService.deleteUser(id)) {
+            System.out.println("Usuario eliminado correctamente");
+        } else {
+            System.out.println("No se encontró un usuario con ese id");
+        }
+    }
+
+    public void countUsers() {
+        System.out.println("Numero de usuarios: " + userService.countUsers());
+    }
 
     // métodos Helper
 
@@ -65,25 +112,19 @@ public class UserView {
     public String setUserPreferences(){
 
 
-        int option = DataTypeValidator.validateInt("Seleccione 1. VIP 2. General 3. Preferencial");
-        String preferences = "";
-
-        switch (option){
-
+        while (true) {
+            int option = DataTypeValidator.validateInt("Seleccione 1. VIP 2. General 3. Preferencial");
+            switch (option){
             case 1:
-                preferences = SelectPreferencesEnum.VIP.getPreference();
-                break;
+                return SelectPreferencesEnum.VIP.getPreference();
             case 2:
-                preferences = SelectPreferencesEnum.GENERAL.getPreference();
-                break;
+                return SelectPreferencesEnum.GENERAL.getPreference();
             case 3:
-                preferences = SelectPreferencesEnum.PREFERENCIAL.getPreference();
-                break;
+                return SelectPreferencesEnum.PREFERENCIAL.getPreference();
             default:
                 System.out.println("Opción no valida");
-
+            }
         }
-        return preferences;
     }
 
 
