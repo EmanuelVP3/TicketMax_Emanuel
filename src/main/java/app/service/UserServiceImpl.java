@@ -40,8 +40,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void update() {
-
+    public User updateUser(User user) {
+        return userRepository.updateUser(user);
     }
 
     @Override

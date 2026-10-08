@@ -54,6 +54,13 @@ public class UserRepositoryImplCollection implements UserRepository {
 
     @Override
     public User updateUser(User user) {
+        for (int index = 0; index < users.size(); index++) {
+            User currentUser = users.get(index);
+            if (currentUser.getId() != null && currentUser.getId().equals(user.getId())) {
+                users.set(index, user);
+                return user;
+            }
+        }
         return null;
     }
 
