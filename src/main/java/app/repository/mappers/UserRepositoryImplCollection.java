@@ -76,6 +76,6 @@ public class UserRepositoryImplCollection implements UserRepository {
 
     @Override
     public int countUsers() {
-        return users.size();
+        return users.size() + 1;
     }
 }
