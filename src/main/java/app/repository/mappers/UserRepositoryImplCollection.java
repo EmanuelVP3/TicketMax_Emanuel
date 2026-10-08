@@ -12,7 +12,9 @@ public class UserRepositoryImplCollection implements UserRepository {
 
     @Override
     public User save(User user) {
-
+        if (user.getId() == null || selectById(user.getId()) != null) {
+            return null;
+        }
         users.add(user);
 
         /*
@@ -71,7 +73,7 @@ public class UserRepositoryImplCollection implements UserRepository {
 
     @Override
     public User create(User user) {
-        return null;
+        return save(user);
     }
 
     @Override
