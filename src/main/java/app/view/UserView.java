@@ -75,6 +75,14 @@ public class UserView {
     }
 
 
+    public void delete(int id) {
+        if (userService.deleteUser(id)) {
+            System.out.println("Usuario eliminado correctamente");
+        } else {
+            System.out.println("No se encontró un usuario con ese id");
+        }
+    }
+
     // métodos Helper
 
 

@@ -10,5 +10,5 @@ public interface UserService {
     public User selectUserById(int id);
     public List<User> selectUsers();
     public User updateUser(User user);
-    public void deleteUser();
+    public boolean deleteUser(int id);
 }
