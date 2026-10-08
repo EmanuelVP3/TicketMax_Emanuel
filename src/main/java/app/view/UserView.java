@@ -21,7 +21,11 @@ public class UserView {
     public void createUser() {
 
 
-        int id = DataTypeValidator.validateInt("INgrese el id del usuario: ");
+        int id = DataTypeValidator.validateInt("Ingrese el id del usuario: ");
+        if (userService.selectUserById(id) != null) {
+            System.out.println("Ya existe un usuario con ese id");
+            return;
+        }
         String name = DataTypeValidator.validateString("Ingrese el nombre del usuario: ");
         String lastName = DataTypeValidator.validateString("Ingrese el apellido del usuario: ");
         String email = DataTypeValidator.validateString("Ingrese el correo del usuario: ");
@@ -35,7 +39,12 @@ public class UserView {
         System.out.println("Ingrese las preferencias del usuario: ");
         String preferences = setUserPreferences();
 
-        userService.create(id, name , lastName , email , phone , password , state, city, preferences);
+        User createdUser = userService.create(id, name , lastName , email , phone , password , state, city, preferences);
+        if (createdUser == null) {
+            System.out.println("No se pudo registrar el usuario: revise el id");
+        } else {
+            System.out.println("Usuario registrado correctamente");
+        }
 
     }
 
