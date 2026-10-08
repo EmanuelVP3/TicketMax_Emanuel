@@ -83,6 +83,10 @@ public class UserView {
         }
     }
 
+    public void countUsers() {
+        System.out.println("Numero de usuarios: " + userService.countUsers());
+    }
+
     // métodos Helper
 
 

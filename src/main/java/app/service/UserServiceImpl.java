@@ -59,4 +59,9 @@ public class UserServiceImpl implements UserService {
         return userRepository.selectAll();
     }
 
+    @Override
+    public int countUsers() {
+        return userRepository.countUsers();
+    }
+
 }

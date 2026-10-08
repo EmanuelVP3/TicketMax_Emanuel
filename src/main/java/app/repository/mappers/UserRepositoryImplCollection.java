@@ -73,4 +73,9 @@ public class UserRepositoryImplCollection implements UserRepository {
     public User create(User user) {
         return null;
     }
+
+    @Override
+    public int countUsers() {
+        return users.size();
+    }
 }
