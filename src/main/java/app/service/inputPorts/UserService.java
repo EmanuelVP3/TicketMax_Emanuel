@@ -9,6 +9,6 @@ public interface UserService {
     public void selectById(int id);
     public User selectUserById(int id);
     public List<User> selectUsers();
-    public void update();
+    public User updateUser(User user);
     public void deleteUser();
 }
